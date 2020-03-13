@@ -1,2 +1,24 @@
-# ERP10IONIC
-An mobile application that use Ionic platform.
+﻿# PRIMAVERA ERP10 IONIC APP
+The PRIMAVERA ERP 10 is a mobile application that was builded using the Ionic framework. It includes several features that allows learn how to use the web api module.
+
+In this application, you can see and learn how to work with serval entities using the webapi, such as:
+- Customer
+- Itens
+- Invoices
+- Login
+- Companies
+
+## Getting started
+1. Clone the repo to download all samples.
+
+   `git clone https://github.com/PrimaverabssDeveloper/ERP10IONIC/.git`
+
+2. In your terminal, navigate to the project's root folder
+3. Run this command: `npm install @ionic/app-scripts@latest --save-dev`
+4. Run `npm rebuild node-sass` to build the binding for your current environment.
+
+## Build
+To compile the application Run `npm run build`
+
+## Star
+To strat the application Run `npm start`
