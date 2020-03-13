@@ -29,3 +29,11 @@ To compile the application Run `npm run build`
 
 ## Star
 To strat the application Run `npm start`
+
+### Contributing and Feedback
+Everyone is free to contribute to the repository.
+
+Any bugs detected in the code samples can be reported in the *Issues* section of this repository.
+
+### License
+Unless otherwise specified, the code samples are released under the [MIT license](https://pt.wikipedia.org/wiki/Licen%C3%A7a_MIT).
