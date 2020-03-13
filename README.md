@@ -15,7 +15,7 @@ In this application, you can see and learn how to work with serval entities usin
 3. Run this command: `npm install @ionic/app-scripts@latest --save-dev`
 4. Run `npm rebuild node-sass` to build the binding for your current environment.
 
-## Config you app
+### Config you app
 In order to configure your web api endpoint change the application setting at `src/providers/api`
 
 ```C#
@@ -24,16 +24,16 @@ In order to configure your web api endpoint change the application setting at `s
   }
   ```
 
-## Build
+### Build
 To compile the application Run `npm run build`
 
-## Star
+### Run
 To strat the application Run `npm start`
 
-### Contributing and Feedback
+## Contributing and Feedback
 Everyone is free to contribute to the repository.
 
 Any bugs detected in the code samples can be reported in the *Issues* section of this repository.
 
-### License
+## License
 Unless otherwise specified, the code samples are released under the [MIT license](https://pt.wikipedia.org/wiki/Licen%C3%A7a_MIT).
