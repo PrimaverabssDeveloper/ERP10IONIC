@@ -9,8 +9,8 @@ In this application, you can see and learn how to work with serval entities usin
 - Companies
 
 ### System Requirements
-1. A local installation of PRIMAVERA ERP 10.
-2. A local installation of IIS.
+1. PRIMAVERA ERP 10.
+2. IIS.
 3. Node.JS
 
 ## Getting Started
