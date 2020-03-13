@@ -8,7 +8,12 @@ In this application, you can see and learn how to work with serval entities usin
 - Login
 - Companies
 
-## Getting started
+### System Requirements
+1. A local installation of PRIMAVERA ERP 10.
+2. A local installation of IIS.
+3. Node.JS
+
+## Getting Started
 1. Clone the repo:
   `git clone https://github.com/PrimaverabssDeveloper/ERP10IONIC.git`
 2. In your terminal, navigate to the project's root folder
@@ -24,11 +29,9 @@ In order to configure your web api endpoint change the application setting at `s
   }
   ```
 
-### Build
-To compile the application Run `npm run build`
-
-### Run
-To strat the application Run `npm start`
+### Build and Run
+1. To compile the application Run `npm run build`
+2. To strat the application Run `npm start`
 
 ## Contributing and Feedback
 Everyone is free to contribute to the repository.
