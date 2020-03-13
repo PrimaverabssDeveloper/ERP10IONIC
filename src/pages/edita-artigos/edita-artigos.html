@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Artigo - {{artigosObj.Artigo}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary">Descricao</ion-label>
+        <ion-input [(ngModel)]="artigosObj.Descricao"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Código de Barras</ion-label>
+        <ion-input [(ngModel)]="artigosObj.CodBarras"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Unidade Base</ion-label>
+        <ion-input [(ngModel)]="artigosObj.UnidadeBase"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">IVA</ion-label>
+        <ion-input type="number" [(ngModel)]="artigosObj.IVA"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Peso</ion-label>
+        <ion-input type="number" [(ngModel)]="artigosObj.Peso"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Volume</ion-label>
+        <ion-input type="number" [(ngModel)]="artigosObj.Volume"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Observações</ion-label>
+        <ion-textarea [(ngModel)]="artigosObj.Observacoes" rows="3"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <button ion-button type="submit" (click)="atualizaArtigo()" item-right>Confirmar</button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

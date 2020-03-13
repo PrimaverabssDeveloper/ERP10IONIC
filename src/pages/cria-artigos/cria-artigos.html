@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Criar Artigo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-list>
+      <form [formGroup]="criaArtigosForm">
+        <ion-item>
+          <ion-label color="primary">Artigo</ion-label>
+          <ion-input type="text" formControlName="artigo" [(ngModel)]="artigosObj.Artigo" name="artigo"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!criaArtigosForm.controls.artigo.valid && !criaArtigosForm.controls.artigo.pending && criaArtigosForm.controls.artigo.dirty ">
+          <p>Esse Artigo já existe</p>
+        </ion-item>
+        <div *ngFor="let validation of validationMessages.artigo">
+          <ion-item *ngIf="criaArtigosForm.controls.artigo.hasError(validation.type) && criaArtigosForm.controls.artigo.touched">
+            <sup ion-text color="danger">{{validation.message}}</sup>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label color="primary">Descrição</ion-label>
+          <ion-input type="text" formControlName="descricao" [(ngModel)]="artigosObj.Descricao" name="descricao"></ion-input>
+        </ion-item>
+        <div *ngFor="let validation of validationMessages.descricao">
+          <ion-item *ngIf="criaArtigosForm.controls.descricao.hasError(validation.type) && criaArtigosForm.controls.descricao.touched">
+            <sup ion-text color="danger">{{validation.message}}</sup>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label color="primary">Código de Barras</ion-label>
+          <ion-input type="text" formControlName="codBarras" [(ngModel)]="artigosObj.CodBarras" name="codBarras"></ion-input>
+        </ion-item>
+        <div *ngFor="let validation of validationMessages.codBarras">
+          <ion-item *ngIf="criaArtigosForm.controls.codBarras.hasError(validation.type) && criaArtigosForm.controls.codBarras.touched">
+            <sup ion-text color="danger">{{validation.message}}</sup>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label color="primary">Unidade Base</ion-label>
+          <ion-input placeholder="UN" type="text" formControlName="unidadeBase" [(ngModel)]="artigosObj.UnidadeBase"
+            name="unidadeBase"></ion-input>
+        </ion-item>
+        <div *ngFor="let validation of validationMessages.unidadeBase">
+          <ion-item *ngIf="criaArtigosForm.controls.unidadeBase.hasError(validation.type) && criaArtigosForm.controls.unidadeBase.touched">
+            <sup ion-text color="danger">{{validation.message}}</sup>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label color="primary">IVA</ion-label>
+          <ion-input type="number" formControlName="iva" [(ngModel)]="artigosObj.IVA" name="iva"></ion-input>
+        </ion-item>
+        <div *ngFor="let validation of validationMessages.iva">
+          <ion-item *ngIf="criaArtigosForm.controls.iva.hasError(validation.type) && criaArtigosForm.controls.iva.touched">
+            <sup ion-text color="danger">{{validation.message}}</sup>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label color="primary">Peso</ion-label>
+          <ion-input type="number" min="0" max="1000" formControlName="peso" [(ngModel)]="artigosObj.Peso" name="peso"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary">Volume</ion-label>
+          <ion-input type="number" min="0" max="1000" formControlName="volume" [(ngModel)]="artigosObj.Volume" name="Volume"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary">Observações</ion-label>
+          <ion-textarea type="text" formControlName="observacoes" rows="3" [(ngModel)]="artigosObj.Observacoes" name="observacoes"></ion-textarea>
+        </ion-item>
+        <div *ngFor="let validation of validationMessages.marca">
+          <ion-item *ngIf="criaArtigosForm.controls.observacoes.hasError(validation.type) && criaArtigosForm.controls.observacoes.touched">
+            <sup ion-text color="danger">{{validation.message}}</sup>
+          </ion-item>
+        </div>
+        <ion-item>
+          <button ion-button item-right (click)="criarArtigo()" [disabled]="!criaArtigosForm.valid">Confirmar</button>
+        </ion-item>
+      </form>
+    </ion-list>
+  </ion-card>
+</ion-content>

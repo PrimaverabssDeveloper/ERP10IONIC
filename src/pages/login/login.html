@@ -1,0 +1,63 @@
+<ion-content>
+  <ion-grid style="height: 100%">
+    <ion-row justify-content-center align-items-center style="height: 100%">
+      <ion-card class="card">
+        <ion-card-content>
+          <ion-slides class="swiper-no-swiping">
+            <ion-slide>
+              <h1>Bem-vindo</h1>
+              <form [formGroup]="loginForm">
+                <ion-list>
+                  <ion-item>
+                    <ion-label>Username</ion-label>
+                    <ion-input formControlName="username" [(ngModel)]="loginObj.username" type="text"></ion-input>
+                  </ion-item>
+                  <div *ngFor="let validation of validationMessages.username">
+                    <ion-item *ngIf="loginForm.controls.username.hasError(validation.type) && loginForm.controls.username.touched">
+                      <sup ion-text color="danger">{{validation.message}}</sup>
+                    </ion-item>
+                  </div>
+                  <ion-item>
+                    <ion-label>Password</ion-label>
+                    <ion-input formControlName="password" [(ngModel)]="loginObj.password" [type]="passwordType"></ion-input>
+                    <ion-icon name="eye" *ngIf="passwordShown" item-end (click)="togglePassword()"></ion-icon>
+                    <ion-icon name="eye-off" *ngIf="!passwordShown" item-end (click)="togglePassword()"></ion-icon>
+                  </ion-item>
+                  <div *ngFor="let validation of validationMessages.password">
+                    <ion-item *ngIf="loginForm.controls.password.hasError(validation.type) && loginForm.controls.password.touched">
+                      <sup ion-text color="danger">{{validation.message}}</sup>
+                    </ion-item>
+                  </div>
+                </ion-list>
+                <ion-list>
+                  <ion-item>
+                    <button ion-button (click)="login()" item-right icon-end>
+                      <ion-icon name="md-arrow-round-forward"></ion-icon>
+                    </button>
+                  </ion-item>
+                </ion-list>
+              </form>
+            </ion-slide>
+            <ion-slide>
+              <h1>Escolha a sua empresa</h1>
+              <form (ngSubmit)="onSubmit" [formGroup]="companyForm">
+                <ion-list>
+                  <ion-item>
+                    <ion-select item-left [(ngModel)]="loginObj.company" formControlName="company">
+                      <ion-option *ngFor="let company of companies" value="{{company.Codigo}}">{{company.Codigo}}</ion-option>
+                    </ion-select>
+                  </ion-item>
+                  <div padding>
+                    <button ion-button block type="submit" (click)="loginApp()">
+                      Log-in
+                    </button>
+                  </div>
+                </ion-list>
+              </form>
+            </ion-slide>
+          </ion-slides>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>

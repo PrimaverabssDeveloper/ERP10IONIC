@@ -1,0 +1,140 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Documento de Venda</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <form [formGroup]="docForm">
+      <ion-item no-lines>
+        <ion-label color="primary">Documento</ion-label>
+        <ion-input type="text" formControlName="documento" (ionBlur)="getSerie(); daValorDocumento()" [(ngModel)]="documentoObj.Tipodoc"
+          name="documento"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!docForm.controls.documento.valid && !docForm.controls.documento.pending && docForm.controls.documento.dirty ">
+        <p>Documento não é válido</p>
+      </ion-item>
+      <div *ngFor="let validation of validationMessages.documento">
+        <ion-item *ngIf="docForm.controls.documento.hasError(validation.type) && docForm.controls.documento.touched">
+          <sup ion-text color="danger">{{validation.message}}</sup>
+        </ion-item>
+      </div>
+      <ion-item *ngIf="docForm.controls.documento.valid">
+        <h5 ion-text color="secondary">{{docFields.DescricaoDoc}}</h5>
+      </ion-item>
+      <ion-item>
+        <ion-label item-left color="primary">Série</ion-label>
+        <ion-select item-left formControlName="serie" [(ngModel)]="documentoObj.Serie" name="serie">
+          <ion-option *ngFor="let serie of series" [value]="serie.Serie" [selected]="serie.Serie">{{serie.Serie}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <div *ngFor="let validation of validationMessages.serie">
+        <ion-item *ngIf="docForm.controls.serie.hasError(validation.type) && docForm.controls.serie.touched">
+          <sup ion-text color="danger">{{validation.message}}</sup>
+        </ion-item>
+      </div>
+      <ion-item>
+        <ion-label color="primary">Data Documento</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" formControlName="dataDoc" max="2030" [(ngModel)]="documentoObj.DataDoc"
+          name="DataDoc"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Data Vencimento</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" formControlName="dataVenc" max="2030" [(ngModel)]="documentoObj.DataVenc"
+          name="DataVenc"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Cliente</ion-label>
+        <ion-input type="text" formControlName="cliente" [(ngModel)]="documentoObj.Entidade" name="cliente" (ionBlur)="daValorCliente()"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!docForm.controls.cliente.valid && docForm.controls.cliente.dirty">
+        <p>Cliente não existe</p>
+      </ion-item>
+      <div *ngFor="let validation of validationMessages.cliente">
+        <ion-item *ngIf="docForm.controls.cliente.hasError(validation.type) && docForm.controls.cliente.touched">
+          <sup ion-text color="danger">{{validation.message}}</sup>
+        </ion-item>
+      </div>
+      <ion-item *ngIf="docForm.controls.cliente.valid">
+        <h5>Nome: <span ion-text color="secondary">{{docFields.NomeCliente}}</span></h5>
+        <h5>Num. Contribuinte: <span ion-text color="secondary">{{docFields.NumContribuinte}}</span></h5>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Artigo</ion-label>
+        <ion-input type="text" formControlName="artigo" [(ngModel)]="docFields.Artigo" name="artigo" (ionBlur)="daValorArtigo()"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!docForm.controls.artigo.valid && docForm.controls.artigo.dirty">
+        <p>Artigo não existe</p>
+      </ion-item>
+      <div *ngFor="let validation of validationMessages.artigo">
+        <ion-item *ngIf="docForm.controls.artigo.hasError(validation.type) && docForm.controls.artigo.touched">
+          <sup ion-text color="danger">{{validation.message}}</sup>
+        </ion-item>
+      </div>
+      <ion-item *ngIf="docForm.controls.artigo.valid">
+        <h5>Descrição: <span ion-text color="secondary">{{docFields.DescricaoArtigo}}</span></h5>
+        <h5>Armazem: <span ion-text color="secondary">{{docFields.ArmazemArtigo}}</span></h5>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Quantidade</ion-label>
+        <ion-input type="number" formControlName="quantidade" [(ngModel)]="docFields.Quantidade" name="quantidade"></ion-input>
+      </ion-item>
+      <div *ngFor="let validation of validationMessages.quantidade">
+        <ion-item *ngIf="docForm.controls.quantidade.hasError(validation.type) && docForm.controls.quantidade.touched">
+          <sup ion-text color="danger">{{validation.message}}</sup>
+        </ion-item>
+      </div>
+      <ion-item>
+        <button ion-button item-right (click)="addArtigo()" [disabled]="docForm.invalid">Adicionar</button>
+      </ion-item>
+      <ion-item>
+        <button ion-button full type="submit " (click)="createDocument()" [disabled]="docForm.invalid ">Confirmar</button>
+      </ion-item>
+    </form>
+  </ion-card>
+
+  <ion-card>
+    <ion-item-divider color="light">Lista de Artigos</ion-item-divider>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label color="primary">Artigo</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label color="primary">Quantidade</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+      <ion-list *ngFor="let artigo of linhas">
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <h2>{{artigo.Artigo}}</h2>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item item-left>
+              <h2>{{artigo.Quantidade}}</h2>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <button ion-button clear item-end (click)="removeArtigo(artigo)" color="danger">
+                Remover
+              </button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+    </ion-grid>
+  </ion-card>
+</ion-content>

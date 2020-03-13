@@ -1,0 +1,128 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Criar Cliente</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-list>
+      <form [formGroup]="criaClienteForm">
+        <ion-item>
+          <ion-label color="primary">Cliente</ion-label>
+          <ion-input type="text" formControlName="cliente" [(ngModel)]="clientesObj.Cliente" name="cliente"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!criaClienteForm.controls.cliente.valid && !criaClienteForm.controls.cliente.pending && criaClienteForm.controls.cliente.dirty ">
+          <p>Esse cliente já existe</p>
+        </ion-item>
+        <div *ngFor="let validation of validationMessages.cliente">
+          <ion-item *ngIf="criaClienteForm.controls.cliente.hasError(validation.type) && criaClienteForm.controls.cliente.touched">
+            <sup ion-text color="danger">{{validation.message}}</sup>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label color="primary">Nome</ion-label>
+          <ion-input type="text" formControlName="nome" [(ngModel)]="clientesObj.Nome" name="Nome"></ion-input>
+        </ion-item>
+        <div *ngFor="let validation of validationMessages.nome">
+          <ion-item *ngIf="criaClienteForm.controls.nome.hasError(validation.type) && criaClienteForm.controls.nome.touched">
+            <sup ion-text color="danger">{{validation.message}}</sup>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label color="primary">Descrição</ion-label>
+          <ion-input type="text" formControlName="descricao" [(ngModel)]="clientesObj.Descricao" name="Descricao"></ion-input>
+        </ion-item>
+        <div *ngFor="let validation of validationMessages.descricao">
+          <ion-item *ngIf="criaClienteForm.controls.descricao.hasError(validation.type) && criaClienteForm.controls.descricao.touched">
+            <sup ion-text color="danger">{{validation.message}}</sup>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label color="primary">Morada</ion-label>
+          <ion-input type="text" formControlName="morada" [(ngModel)]="clientesObj.Morada" name="Morada"></ion-input>
+        </ion-item>
+        <div *ngFor="let validation of validationMessages.morada">
+          <ion-item *ngIf="criaClienteForm.controls.morada.hasError(validation.type) && criaClienteForm.controls.morada.touched">
+            <sup ion-text color="danger">{{validation.message}}</sup>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label color="primary">Localidade</ion-label>
+          <ion-input type="text" formControlName="localidade" [(ngModel)]="clientesObj.Localidade" name="Localidade"></ion-input>
+        </ion-item>
+        <div *ngFor="let validation of validationMessages.localidade">
+          <ion-item *ngIf="criaClienteForm.controls.localidade.hasError(validation.type) && criaClienteForm.controls.localidade.touched">
+            <sup ion-text color="danger">{{validation.message}}</sup>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label color="primary">Código Postal</ion-label>
+          <ion-input type="text" formControlName="codPostal" [(ngModel)]="clientesObj.CodigoPostal" name="CodigoPostal"></ion-input>
+        </ion-item>
+        <div *ngFor="let validation of validationMessages.codPostal">
+          <ion-item *ngIf="criaClienteForm.controls.codPostal.hasError(validation.type) && criaClienteForm.controls.codPostal.touched">
+            <sup ion-text color="danger">{{validation.message}}</sup>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label color="primary">Localidade do Cod. Postal</ion-label>
+          <ion-input type="text" formControlName="locCodPostal" [(ngModel)]="clientesObj.LocalidadeCodigoPostal" name="LocalidadeCodigoPostal"></ion-input>
+        </ion-item>
+        <div *ngFor="let validation of validationMessages.locCodPostal">
+          <ion-item *ngIf="criaClienteForm.controls.locCodPostal.hasError(validation.type) && criaClienteForm.controls.locCodPostal.touched">
+            <sup ion-text color="danger">{{validation.message}}</sup>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label color="primary">Telefone</ion-label>
+          <ion-input type="number" formControlName="telefone" [(ngModel)]="clientesObj.Telefone" name="Telefone"></ion-input>
+        </ion-item>
+        <div *ngFor="let validation of validationMessages.telefone">
+          <ion-item *ngIf="criaClienteForm.controls.telefone.hasError(validation.type) && criaClienteForm.controls.telefone.touched">
+            <sup ion-text color="danger">{{validation.message}}</sup>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label color="primary">Num. de Contribuite</ion-label>
+          <ion-input type="number" formControlName="numContribuinte" [(ngModel)]="clientesObj.NumContribuinte" name="NumContribuinte"></ion-input>
+        </ion-item>
+        <div *ngFor="let validation of validationMessages.numContribuinte">
+          <ion-item *ngIf="criaClienteForm.controls.numContribuinte.hasError(validation.type) && criaClienteForm.controls.numContribuinte.touched">
+            <sup ion-text color="danger">{{validation.message}}</sup>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label item-left color="primary">Pais</ion-label>
+          <ion-select item-left formControlName="pais" [(ngModel)]="clientesObj.Pais" name="pais">
+            <ion-option *ngFor="let pais of paises" value="{{pais.Pais}}">{{pais.Pais}} - {{pais.Descricao}}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+        <div *ngFor="let validation of validationMessages.pais">
+          <ion-item *ngIf="criaClienteForm.controls.pais.hasError(validation.type) && criaClienteForm.controls.pais.touched">
+            <sup ion-text color="danger">{{validation.message}}</sup>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label item-left color="primary">Moeda</ion-label>
+          <ion-select item-left formControlName="moeda" [(ngModel)]="clientesObj.Moeda" name="moeda">
+            <ion-option *ngFor="let moeda of moedas" value="{{moeda.Moeda}}">{{moeda.Moeda}} - {{moeda.Descricao}}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+        <div *ngFor="let validation of validationMessages.moeda">
+          <ion-item *ngIf="criaClienteForm.controls.moeda.hasError(validation.type) && criaClienteForm.controls.moeda.touched">
+            <sup ion-text color="danger">{{validation.message}}</sup>
+          </ion-item>
+        </div>
+        <ion-item>
+          <button ion-button item-right (click)="criarCliente()" [disabled]="criaClienteForm.invalid">Confirmar</button>
+        </ion-item>
+      </form>
+    </ion-list>
+  </ion-card>
+</ion-content>

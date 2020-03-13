@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Cliente - {{clientesObj.Cliente}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary">Nome</ion-label>
+        <ion-input [(ngModel)]="clientesObj.Nome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Descricao</ion-label>
+        <ion-input [(ngModel)]="clientesObj.Descricao"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Morada</ion-label>
+        <ion-input [(ngModel)]="clientesObj.Morada"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Localidade</ion-label>
+        <ion-input [(ngModel)]="clientesObj.Localidade"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Localidade do Cod. Postal</ion-label>
+        <ion-input [(ngModel)]="clientesObj.LocalidadeCodigoPostal"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Telefone</ion-label>
+        <ion-input [(ngModel)]="clientesObj.Telefone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button type="submit" (click)="atualizaCliente()" item-right>Confirmar</button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

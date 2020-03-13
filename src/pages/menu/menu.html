@@ -1,0 +1,53 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-avatar>
+        <img src="assets/imgs/img_avatar.png">
+      </ion-avatar>
+      <h4 text-center>{{username}}</h4>
+      <ion-row></ion-row>
+    </ion-list>
+
+    <ion-list no-lines>
+      <ion-list-header>
+        Primavera Base Services
+      </ion-list-header>
+
+      <ion-item ion-item icon-start *ngFor="let p of pages; let i=index" (click)="openPage(p, i)">
+        <ion-item ion-item icon-start>
+          <ion-icon name="{{p.Icon}}"></ion-icon>
+          {{p.title}}
+          <ion-icon [name]="selectedMenu == i? 'md-remove' : 'md-add'" *ngIf="p.subPages" float-right></ion-icon>
+          <ion-list [hidden]="selectedMenu != i">
+            <ion-item no-border *ngFor="let subPage of p.subPages" text-wrap (click)="openPage(subPage)">
+              <button ion-item [class.activePageHighlight]="checkActive(subPage)" icon-start>
+                <ion-icon name="{{subPage.Icon}}"></ion-icon>
+                {{subPage.title}}
+              </button>
+            </ion-item>
+          </ion-list>
+        </ion-item>
+      </ion-item>
+    </ion-list>
+
+    <ion-list no-lines>
+      <ion-list-header>
+        Settings
+      </ion-list-header>
+      <ion-item>
+        <button color="danger" menuClose ion-item icon-start (click)="logout()">
+          <ion-icon name="md-log-out"></ion-icon>
+          Logout
+        </button>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-menu>
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

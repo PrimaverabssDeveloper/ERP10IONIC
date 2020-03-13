@@ -1,0 +1,12 @@
+page-menu {
+    ion-avatar,
+    ion-avatar > img{
+        border-radius:50%;
+        height:12rem;
+        width:12rem;
+        margin: 15px auto;
+    }
+    .activePageHighlight{
+      background-color: map-get($colors, primary)
+  }
+}

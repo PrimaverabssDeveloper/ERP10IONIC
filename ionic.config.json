@@ -1,0 +1,15 @@
+{
+  "name": "Primavera.Extensibility.Pwa",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "744d6945",
+  
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://localhost/Primavera.WebAPI/"
+    } 
+    ]
+}
