@@ -31,7 +31,7 @@ In order to configure your web api endpoint change the application setting at `s
 
 ### Build and Run
 1. To compile the application Run `npm run build`
-2. To strat the application Run `npm start`
+2. To start the application Run `npm start`
 
 ## Contributing and Feedback
 Everyone is free to contribute to the repository.
