@@ -10,7 +10,7 @@ In this application, you can see and learn how to work with serval entities usin
 
 ## Getting started
 1. Clone the repo:
-  `git clone https://github.com/PrimaverabssDeveloper/ERP10IONIC/.git`
+  `git clone https://github.com/PrimaverabssDeveloper/ERP10IONIC.git`
 2. In your terminal, navigate to the project's root folder
 3. Run this command: `npm install @ionic/app-scripts@latest --save-dev`
 4. Run `npm rebuild node-sass` to build the binding for your current environment.
